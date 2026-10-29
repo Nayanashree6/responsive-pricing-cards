@@ -1,0 +1,269 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="pricing-section">
+        <h1>Simple, Transparent Pricing</h1>
+        <p class="subtitle">Choose the perfect plan for your needs.</p>
+
+        <div class="billing-toggle">
+            <span>Monthly</span>
+            <label class="switch">
+                <input type="checkbox" id="billingToggle">
+                <span class="slider"></span>
+            </label>
+            <span>Yearly <small>Save 20%</small></span>
+        </div>
+
+        <div class="pricing-container">
+
+            <div class="pricing-card">
+                <h2>Basic</h2>
+                <p>Perfect for individuals</p>
+                <h3 class="price" data-monthly="9" data-yearly="86">
+                    $9<span>/month</span>
+                </h3>
+                <ul>
+                    <li>✓ 5 Projects</li>
+                    <li>✓ Basic Support</li>
+                    <li>✓ 5 GB Storage</li>
+                </ul>
+                <button>Get Started</button>
+            </div>
+
+            <div class="pricing-card popular">
+                <div class="badge">Popular</div>
+                <h2>Pro</h2>
+                <p>Best for professionals</p>
+                <h3 class="price" data-monthly="19" data-yearly="182">
+                    $19<span>/month</span>
+                </h3>
+                <ul>
+                    <li>✓ Unlimited Projects</li>
+                    <li>✓ Priority Support</li>
+                    <li>✓ 50 GB Storage</li>
+                    <li>✓ Advanced Analytics</li>
+                </ul>
+                <button>Choose Pro</button>
+            </div>
+
+            <div class="pricing-card best-value">
+                <div class="badge">Best Value</div>
+                <h2>Enterprise</h2>
+                <p>For growing businesses</p>
+                <h3 class="price" data-monthly="39" data-yearly="374">
+                    $39<span>/month</span>
+                </h3>
+                <ul>
+                    <li>✓ Unlimited Projects</li>
+                    <li>✓ 24/7 Support</li>
+                    <li>✓ Unlimited Storage</li>
+                    <li>✓ Advanced Analytics</li>
+                </ul>
+                <button>Contact Sales</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.pricing-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.billing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 45px;
+}
+
+small {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.switch {
+    position: relative;
+    width: 52px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #2563eb;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+.pricing-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+    align-items: stretch;
+}
+
+.pricing-card {
+    position: relative;
+    background: white;
+    padding: 35px 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.15);
+}
+
+.pricing-card h2 {
+    margin-bottom: 12px;
+}
+
+.pricing-card p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.price {
+    font-size: 38px;
+    margin: 25px 0;
+}
+
+.price span {
+    font-size: 14px;
+    font-weight: normal;
+    color: #64748b;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #1d4ed8;
+    transform: scale(1.03);
+}
+
+.popular {
+    border: 2px solid #2563eb;
+}
+
+.badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 7px 18px;
+    border-radius: 20px;
+    background: #2563eb;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.best-value .badge {
+    background: #16a34a;
+}
+
+@media (max-width: 850px) {
+    .pricing-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 580px) {
+    .pricing-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .pricing-section {
+        padding: 40px 18px;
+    }
+}
+```
